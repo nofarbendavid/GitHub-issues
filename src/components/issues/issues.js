@@ -19,11 +19,12 @@ export class Issues extends React.PureComponent {
     history.push(`${history.location.pathname}/${id}`);
   };
 
+  // test
   renderIssues = () => {
     return map(issue => (
       <Issue key={ issue.id } issue={ issue } openIssue={ this.openIssue }/>
     ))(this.props.issues);
-
+    
   };
 
   render() {
