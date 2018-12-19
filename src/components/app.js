@@ -9,8 +9,8 @@ import store              from 'store';
 import theme              from 'constants/themes.constants';
 import Localization       from 'components/localization';
 import Layout             from 'components/layout/layout';
-import Issues             from "./issues/issues";
-import {IssuePage}        from "./issues/issuePage";
+import Issues             from "components/issues/issues";
+import {IssuePage}        from "components/issuePage/issuePage";
 
 class App extends React.Component<{||}> {
   render() {
@@ -20,12 +20,9 @@ class App extends React.Component<{||}> {
           <ThemeProvider theme={theme}>
             <Router history={history}>
               <Layout>
-                <Route path="/" render={() =>(<Redirect to="/facebook/react/issues"/>)}/>
-                <Route exact path="/facebook/react/issues" component={Issues} />
-                <Route
-                  path="/facebook/react/issues/:id"
-                  component={IssuePage}
-                />
+                <Route path="/" render={() => (<Redirect to="/facebook/react/issues"/>)}/>
+                <Route exact path="/facebook/react/issues" component={Issues}/>
+                <Route path="/facebook/react/issues/:id" component={IssuePage}/>
               </Layout>
             </Router>
           </ThemeProvider>

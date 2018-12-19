@@ -4,7 +4,6 @@ import type { NetworkState } from 'reducers/network.reducer';
 import type { NetworkAction } from 'actions/network.actions';
 import type { LocalizationAction } from 'actions/localization.actions';
 import type { ApiAction } from 'actions/api.actions';
-import type { SampleAction } from '../sample/sample.actions'; // TODO: remove sample action
 
 export type BaseAction<PayloadType = any> = {|
   +type: string,
@@ -20,7 +19,6 @@ export type BaseActionWithMeta<PayloadType = any, MetaType = any> = {|
 export type Action =
   | NetworkAction
   | LocalizationAction // TODO: remove if not needed
-  | SampleAction // TODO: remove
   | ApiAction;
 
 export type State = {
