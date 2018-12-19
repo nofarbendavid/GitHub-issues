@@ -17,7 +17,6 @@ export class Issues extends React.PureComponent {
     const history = this.props.history;
 
     history.push(`${history.location.pathname}/${id}`);
-    
   };
 
   renderIssues = () => {
