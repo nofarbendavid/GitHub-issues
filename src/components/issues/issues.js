@@ -14,17 +14,15 @@ export class Issues extends React.PureComponent {
   }
 
   openIssue = (id) => {
-    const history = this.props.history;
+    const { history } = this.props;
 
     history.push(`${history.location.pathname}/${id}`);
   };
 
-  // test3
-  renderIssues = () => {
-    return map((issue) => (
+  renderIssues = () =>
+    map((issue) => (
       <Issue key={ issue.id } issue={ issue } openIssue={ this.openIssue }/>
     ))(this.props.issues);
-  };
 
   render() {
     return (
