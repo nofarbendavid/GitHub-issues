@@ -1,28 +1,27 @@
-import * as React          from 'react';
-import styled              from 'styled-components';
-import {connect}           from 'react-redux';
-import {map}               from 'lodash/fp';
+import * as React from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { map } from 'lodash/fp';
 
-import * as issuesActions  from 'actions/issues.actions';
-import {isLoadingSelector} from "selectors/network.selectors";
+import * as issuesActions from 'actions/issues.actions';
+import { isLoadingSelector } from 'selectors/network.selectors';
 
-import {Issue}             from "components/issue/issue";
-
+import { Issue } from 'components/issue/issue';
 
 export class Issues extends React.PureComponent {
   componentDidMount() {
     this.props.fetchIssues();
   }
 
-
-  openIssue = (id) => {
+  openIssue = id => {
     const history = this.props.history;
     history.push(`${history.location.pathname}/${id}`);
-
-  }
+  };
 
   renderIssues = () => {
-    return map((issue) => <Issue key={issue.id} issue={issue} openIssue={this.openIssue}/>)(this.props.issues)
+    return map(issue => (
+      <Issue key={issue.id} issue={issue} openIssue={this.openIssue} />
+    ))(this.props.issues);
   };
 
   render() {
@@ -39,7 +38,6 @@ const StyledContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
 
 const mapStateToProps = state => ({
   issues: state.issues.issues,
