@@ -1,6 +1,6 @@
 import {handleActions}   from 'redux-actions';
 import {get, set, keyBy} from 'lodash/fp';
-import * as AT           from "./issues.actions";
+import * as AT           from "../actions/issues.actions";
 
 
 

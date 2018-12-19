@@ -1,11 +1,11 @@
 import * as React                     from 'react';
 import styled                         from 'styled-components';
 import {connect}                      from 'react-redux';
-import * as issuesActions             from './issues.actions.js';
+import * as issuesActions             from '../../actions/issues.actions.js';
 import {isLoadingSelector}            from '../../selectors/network.selectors';
 import {values}                       from 'lodash/fp';
 import {FormattedMessage}             from 'react-intl';
-import {calcTimeDeltaFromCurrentTime} from './issue.utills';
+import {calcTimeDeltaFromCurrentTime} from '../../utils/issue.utills';
 import statusIcon                     from '../../assets/images/exclamation-button.svg';
 
 export class Issues extends React.PureComponent {

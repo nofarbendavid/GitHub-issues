@@ -1,4 +1,4 @@
-import { apiAction } from 'actions/api.actions';
+import { apiAction } from './api.actions';
 
 
 export const ISSUES_LABEL = 'issues';
