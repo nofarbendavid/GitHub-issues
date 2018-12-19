@@ -1,0 +1,4 @@
+{
+  "homepage.title": "React issues",
+  "issue.footer": "#{issueNumber} opened {issueCreationDelta} ago by {issueAuthor}"
+}
