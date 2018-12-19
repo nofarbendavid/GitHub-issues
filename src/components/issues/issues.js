@@ -23,6 +23,7 @@ export class Issues extends React.PureComponent {
     return map(issue => (
       <Issue key={ issue.id } issue={ issue } openIssue={ this.openIssue }/>
     ))(this.props.issues);
+
   };
 
   render() {
