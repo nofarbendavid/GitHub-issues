@@ -6,7 +6,7 @@ import { map } from 'lodash/fp';
 import * as issuesActions from 'actions/issues.actions';
 import { isLoadingSelector } from 'selectors/network.selectors';
 
-import { Issue } from 'components/issue/issue';
+import  Issue  from 'components/issue/issue';
 
 export class Issues extends React.PureComponent {
   componentDidMount() {

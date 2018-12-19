@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import statusIcon from 'assets/images/exclamation-button.svg';
 import { calcTimeDeltaFromCurrentTime } from 'utils/issue.utills';
 
-export const Issue = ({ issue, openIssue }) => {
+const Issue = ({ issue, openIssue }) => {
   const { id, title, comments, number, created_at, user } = issue;
 
   return (
@@ -52,7 +52,7 @@ const Title = styled.div`
   font-size: 16px;
   margin-bottom: 5px;
 
-  &hover {
+  &:hover {
     color: #3e6cd5;
     cursor: pointer;
   }
@@ -68,3 +68,5 @@ const Footer = styled.div`
   font-size: 12px;
   color: #666069;
 `;
+
+export default Issue
