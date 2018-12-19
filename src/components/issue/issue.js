@@ -1,91 +1,72 @@
 import * as React                     from 'react';
 import styled                         from 'styled-components';
-import statusIcon                     from "assets/images/exclamation-button.svg";
 import {FormattedMessage}             from "react-intl";
+
+import statusIcon                     from "assets/images/exclamation-button.svg";
 import {calcTimeDeltaFromCurrentTime} from "utils/issue.utills";
 
 
-export const Issue = ({issue, history}) => {
+export const Issue = ({issue, openIssue}) => {
   const { id, title, comments, number, created_at, user } = issue;
   return (
     <StyledIssue>
-      <div className="Issue-container">
-        <div className="Issue-container-state-icon">
-          <img src={statusIcon} alt="status" />
-        </div>
-        <div className="Issue-container-main">
-          <div
-            className="Issue-container-main-title"
-            onClick={() =>
-              history.push(`${history.location.pathname}/${id}`)
-            }>
-            {title}
-          </div>
-          {renderIssueFooter(number, created_at, user)}
-        </div>
-        <div className="Issue-container-comments">{comments}</div>
+      <Icon src={statusIcon} alt="status"/>
+      <div className="Issue-container-main">
+        <Title onClick={() => openIssue(id)}>{title}</Title>
+        <Footer>
+          <FormattedMessage
+            id="issue.footer"
+            values={{
+              issueNumber: number,
+              issueCreationDelta: calcTimeDeltaFromCurrentTime(created_at),
+              issueAuthor: user.login
+            }}
+          />
+        </Footer>
       </div>
+      <Comments>{comments}</Comments>
     </StyledIssue>
   )
 }
-
-const renderIssueFooter = (number, created_at, user) => {
-  return (
-    <div className="issue-footer">
-      <FormattedMessage
-        id="issue.footer"
-        values={{
-          issueNumber: number,
-          issueCreationDelta: calcTimeDeltaFromCurrentTime(created_at),
-          issueAuthor: user.login
-        }}
-      />
-    </div>
-  );
-};
 
 
 const StyledIssue = styled.div`
 border: 1px solid #E0E4E8;
 padding: 10px 10px;
 width: 50%;
-
-.Issue-container{
 display: flex;
 
 .Issue-container-main{
-width: 90%;
+flex-grow: 1;
 }
+`
 
-
-.Issue-container-comments{
-width: 5%;
-}
-
-.Issue-container-state-icon{
+const Icon = styled.img`
 width: 17px;
 height: 17px;
 margin-right: 5px;
-}
+flex-shrink: 0;
+`
 
-.Issue-container-comments{
-display: flex;
-flex-direction: row-reverse;
-}
 
-.Issue-container-main-title{
+const Title = styled.div`
 font-weight: bold;
 font-size: 16px;
 margin-bottom: 5px;
-}
 
-.Issue-container-main-title:hover{
+&hover{
 color: #3E6CD5;
 cursor: pointer;
 }
+`
 
-.issue-footer{
+const Comments = styled.div`
+display: flex;
+flex-direction: row-reverse;
+flex-shrink: 0;
+`
+
+const Footer = styled.div`
 font-size: 12px;
 color: #666069;
-}
-`;
+`

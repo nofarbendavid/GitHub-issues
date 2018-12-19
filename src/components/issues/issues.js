@@ -1,19 +1,28 @@
 import * as React          from 'react';
 import styled              from 'styled-components';
 import {connect}           from 'react-redux';
+import {map}               from 'lodash/fp';
+
 import * as issuesActions  from 'actions/issues.actions';
-import {values}            from 'lodash/fp';
-import {Issue}             from "components/issue/issue";
 import {isLoadingSelector} from "selectors/network.selectors";
+
+import {Issue}             from "components/issue/issue";
+
 
 export class Issues extends React.PureComponent {
   componentDidMount() {
     this.props.fetchIssues();
   }
 
+
+  openIssue = (id) => {
+    const history = this.props.history;
+    history.push(`${history.location.pathname}/${id}`);
+
+  }
+
   renderIssues = () => {
-    const history = this.props.history
-    return values(this.props.issues).map((issue)=> <Issue key={issue.id} {...{issue, history}} />);
+    return map((issue) => <Issue key={issue.id} issue={issue} openIssue={this.openIssue}/>)(this.props.issues)
   };
 
   render() {
