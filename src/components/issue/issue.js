@@ -1,16 +1,16 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
+import * as React         from 'react';
+import styled             from 'styled-components';
+import {FormattedMessage} from 'react-intl';
 
-import statusIcon from 'assets/images/exclamation-button.svg';
-import { calcTimeDeltaFromCurrentTime } from 'utils/issue.utills';
+import statusIcon                     from 'assets/images/exclamation-button.svg';
+import {calcTimeDeltaFromCurrentTime} from 'utils/issue.utills';
 
-const Issue = ({ issue, openIssue }) => {
-  const { id, title, comments, number, created_at, user } = issue;
+const Issue = ({issue, openIssue}) => {
+  const {id, state, title, comments, number, created_at, user} = issue;
 
   return (
     <StyledIssue>
-      <Icon src={statusIcon} alt="status" />
+      <Icon src={statusIcon} alt="status"/>
       <div className="Issue-container-main">
         <Title onClick={() => openIssue(id)}>{title}</Title>
         <Footer>
@@ -69,4 +69,4 @@ const Footer = styled.div`
   color: #666069;
 `;
 
-export default Issue
+export default Issue;
