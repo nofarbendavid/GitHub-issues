@@ -1,26 +1,25 @@
-import {handleActions}   from 'redux-actions';
-import {get, set, keyBy} from 'lodash/fp';
-import * as AT           from "actions/issues.actions";
-
-
+import { handleActions } from 'redux-actions';
+import { get, set, keyBy, castArray } from 'lodash/fp';
+import * as AT from 'actions/issues.actions';
 
 const initialState = {
-  issues: {}
-}
-
+  issues: {},
+  comments: {}
+};
 
 const issuesReducer = handleActions(
   {
     [AT.SET_ISSUES]: (state = initialState, action) =>
-      set('issues', keyBy('id', get('payload.issues', action)), state)
-  }, initialState
+      set(
+        'issues',
+        keyBy('number', castArray(get('payload.issues', action))),
+        state
+      ),
 
+    [AT.SET_COMMENTS]: (state = initialState, action) =>
+      set('comments', keyBy('id', get('payload.comments', action)), state)
+  },
+  initialState
+);
 
-)
-
-
-
-
-
-
-export default issuesReducer
+export default issuesReducer;

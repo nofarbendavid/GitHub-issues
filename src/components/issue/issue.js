@@ -6,13 +6,13 @@ import statusIcon from 'assets/images/exclamation-button.svg';
 import { calcTimeDeltaFromCurrentTime } from 'utils/issue.utills';
 
 const Issue = ({ issue, openIssue }) => {
-  const { id, title, comments, number, created_at, user } = issue;
+  const { title, comments, number, created_at, user } = issue;
 
   return (
     <StyledIssue>
       <Icon src={ statusIcon } alt="status"/>
       <div className="Issue-container-main">
-        <Title onClick={ () => openIssue(id) }>{title}</Title>
+        <Title onClick={ () => openIssue(number) }>{title}</Title>
         <Footer>
           <FormattedMessage
             id="issue.footer"

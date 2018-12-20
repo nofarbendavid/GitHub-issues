@@ -1,4 +1,5 @@
 {
   "homepage.title": "React issues",
-  "issue.footer": "#{issueNumber} opened {issueCreationDelta} ago by {issueAuthor}"
+  "issue.footer": "#{issueNumber} opened {issueCreationDelta} ago by {issueAuthor}",
+  "issuePage.subHeader": "{issueAuthor} opened this issue {issueCreationDelta} ago, {numberOfComments} comments"
 }
